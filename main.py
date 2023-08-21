@@ -1,31 +1,30 @@
 import torch 
-import torch.nn as nn
 import torchvision
-import torchvision.transforms as transforms
 from utils import BasicUtils, TrainTestUtils
 import numpy as np
 import matplotlib.pyplot as plt
-from vgg import VGG11, VGG11LRN, VGG13
+from vgg import VGG11, VGG11LRN, VGG13, VGG16, VGG19
 
 device = BasicUtils().device_chooser()
 train_losses = []
 test_losses = []
 
 # Hyper parameters
-num_epochs = 10
+num_epochs = 1
 num_classes = 10
 batch_size = 100
 learning_rate = 0.001
 
-# MNIST or CIFAR10 dataset
-train_dataset = torchvision.datasets.CIFAR10(root="pytorch_tutorials\data", train=True, transform=transforms.ToTensor(), download=True)
-test_dataset = torchvision.datasets.CIFAR10(root="pytorch_tutorials\data", train=False, transform=transforms.ToTensor(), download=True)
+# Dataset
+train_dataset = torchvision.datasets.CIFAR10(root="data", train=True, transform=torchvision.transforms.ToTensor(), download=True)
+test_dataset = torchvision.datasets.CIFAR10(root="data", train=False, transform=torchvision.transforms.ToTensor(), download=True)
 
 # Data loader
 train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
 
-model = VGG13(num_classes).to(device)
+# Choosing model
+model = VGG11(num_classes).to(device)
 
 # Defining loss and optimizer functions
 loss_fn = BasicUtils().loss_chooser("crossentropy")
