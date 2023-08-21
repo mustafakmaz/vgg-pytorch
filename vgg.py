@@ -35,6 +35,7 @@ class VGG11(nn.Module):
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2)
         )
+        self.flatten = nn.Flatten()
         self.fc1 = nn.Sequential(
             nn.Linear(512, 4096),
             nn.ReLU(inplace=True),
@@ -87,6 +88,7 @@ class VGG11LRN(nn.Module):
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2)
         )
+        self.flatten = nn.Flatten()
         self.fc1 = nn.Sequential(
             nn.Linear(512, 4096),
             nn.ReLU(inplace=True),
