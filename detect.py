@@ -5,16 +5,19 @@ import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import numpy as np
 
-batch_size = 128
+# Batch size
+batch_size = 100
 
-# MNIST or CIFAR10 dataset
-train_dataset = torchvision.datasets.CIFAR10(root="pytorch_tutorials\data", train=True, transform=transforms.ToTensor(), download=True)
-test_dataset = torchvision.datasets.CIFAR10(root="pytorch_tutorials\data", train=False, transform=transforms.ToTensor(), download=True)
+# Dataset
+train_dataset = torchvision.datasets.CIFAR10(root="data", train=True, transform=transforms.ToTensor(), download=True)
+test_dataset = torchvision.datasets.CIFAR10(root="\data", train=False, transform=transforms.ToTensor(), download=True)
 
 # Data loader
 test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
 
-model = torch.load("cnn_model.ckpt")
+# Load model and enable evaluation mode
+model_name = input("Please enter the model name you wanted to load: ")
+model = torch.load(model_name)
 model.eval()
 
 def predict_image(img, model):
