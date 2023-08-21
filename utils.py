@@ -6,7 +6,7 @@ class BasicUtils():
 
     def model_saver(self, model, path):
         torch.save(model, path)
-        print("Saved PyTorch model to " + path + "")
+        print("Model saved. Name: " + path + "")
 
     def device_chooser(self):
         if torch.cuda.is_available():
