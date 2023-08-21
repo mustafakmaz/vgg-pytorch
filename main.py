@@ -26,20 +26,22 @@ train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=bat
 test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
 
 model = VGG13(num_classes).to(device)
-print(model)
-#model = torchvision.models.vgg13(weights=None).to(device)
-#print(model)
 
+# Defining loss and optimizer functions
 loss_fn = BasicUtils().loss_chooser("crossentropy")
 optimizer = BasicUtils().optim_chooser("adamw", model, learning_rate)
 
+# Train and test stage
 for i in range(num_epochs):
     print(f"Epoch {i+1}\n-------------------------------")
     train_losses.append(TrainTestUtils().train(train_loader, model, loss_fn, optimizer, i, num_epochs, batch_size))
     test_losses.append(TrainTestUtils().test(test_loader, model, loss_fn))
 
-BasicUtils().model_saver(model,"cnn_model.ckpt")
+# Saving model
+model_name = str(input("Enter model name:"))
+BasicUtils().model_saver(model,model_name)
 
+# Showing results (train and test losses)
 plt.plot(train_losses,"g",label="train loss")
 plt.plot(test_losses,"r",label="test loss")
 plt.legend(loc="upper left")
