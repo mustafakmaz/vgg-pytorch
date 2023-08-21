@@ -5,7 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from vgg import VGG11, VGG11LRN, VGG13, VGG16, VGG19
 
+# Choosing device (NVIDIA CUDA GPU, Apple Silicon GPU, CPU)
 device = BasicUtils().device_chooser()
+
+# Loss lists
 train_losses = []
 test_losses = []
 
@@ -36,12 +39,12 @@ for i in range(num_epochs):
     train_losses.append(TrainTestUtils().train(train_loader, model, loss_fn, optimizer, i, num_epochs, batch_size))
     test_losses.append(TrainTestUtils().test(test_loader, model, loss_fn))
 
-# Saving model
-model_name = str(input("Enter model name:"))
-BasicUtils().model_saver(model,model_name)
-
 # Showing results (train and test losses)
 plt.plot(train_losses,"g",label="train loss")
 plt.plot(test_losses,"r",label="test loss")
 plt.legend(loc="upper left")
 plt.show()
+
+# Saving model
+model_name = input("Enter model name:")
+BasicUtils().model_saver(model,model_name)
