@@ -126,8 +126,6 @@ class VGG13(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
             nn.ReLU(inplace=True),
-            #nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
-            #nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2)
         )
         self.layer4 = nn.Sequential(
@@ -135,8 +133,6 @@ class VGG13(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
             nn.ReLU(inplace=True),
-            #nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
-            #nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2)
         )
         self.layer5 = nn.Sequential(
@@ -144,8 +140,6 @@ class VGG13(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
             nn.ReLU(inplace=True),
-            #nn.Conv2d(512, 512, kernel_size=3, stride=1, padding=1),
-            #nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2)            
         )
         self.flatten = nn.Flatten()
