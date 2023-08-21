@@ -5,7 +5,7 @@ These models are created from scratch using the [VGG paper](https://arxiv.org/ab
 Sequential models are used to create layers.
 
 I included some basic utilities for training and testing processes.\
-The code is device agnostic (detects the correct device).\
+The code is device agnostic (detects the correct device).
 
-CIFAR10 dataset is used for training and testing processes.
+CIFAR10 dataset is used for training and testing models.
 
