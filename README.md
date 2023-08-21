@@ -8,4 +8,5 @@ I included some basic utilities for training and testing processes.\
 The code is device agnostic (detects the correct device).
 
 CIFAR10 dataset is used for training and testing models.
+Feel free to use this work and test with different datasets!
 
