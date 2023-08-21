@@ -13,7 +13,7 @@ train_losses = []
 test_losses = []
 
 # Hyper parameters
-num_epochs = 1
+num_epochs = 5
 num_classes = 10
 batch_size = 100
 learning_rate = 0.001
