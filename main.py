@@ -7,6 +7,7 @@ from vgg import VGG11, VGG11LRN, VGG13, VGG16, VGG19
 
 # Choosing device (NVIDIA CUDA GPU, Apple Silicon GPU, CPU)
 device = BasicUtils().device_chooser()
+print("Using device: ",device)
 
 # Loss lists
 train_losses = []
